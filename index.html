@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link data-require="sweet-alert@*" data-semver="0.4.2" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body>
+  <form id="swals">
+    <button>Tell Me About your day</button>
+  </form>
+
+  <script>
+    document.querySelector('#swals').addEventListener('submit', function(e) {
+      var form = this;
+      
+      e.preventDefault();
+      
+      swal({
+          title: "How is everything?",
+          text: "Are you okay? Is everything going well for you today?",
+          icon: "Question",
+          buttons: [
+           'No, I am a mess',
+            'WEll..Its going fine', 
+            
+          ],
+          dangerMode: true,
+        }).then(function(isConfirm) {
+          if (isConfirm) {
+            swal({
+              title: 'Yeppy !!!',
+              text: 'Now take that positivity and pass it on to the next person',
+              icon: 'success'
+            }).then(function() {
+              form.submit();
+            });
+          } else {
+            swal("I dont have money, But I love you", "And Mostly Jesus loves you better.!!");
+          }
+        });
+
+    });
+  </script>
+  
+  <style>
+    .swal-button--confirm {
+      background-color: #DD6B55;
+    }
+  </style>
+</body>
+
+</html>
